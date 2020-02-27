@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{%block content%}
+    <div class="content-section">
+        <form method="POST" action="">
+          {{ form.hidden_tag()}}
+          <fieldset class="form-group">
+            <legend class="border-bottom mb-4">{{legend}}</legend>
+            <div class="form-group">
+              <!--prints label of field-->
+                   {{form.Question.label(class="form-control-label")}}
+                 
+                   {%if form.Question.errors%}
+              <!-- different class for errors -->
+                    {{form.Question(class="form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                      {%for error in form.Question.errors%}
+                           <span>{{error}}</span>
+                      {%endfor%}
+                    </div>
+                   {%else%}
+              <!-- prints field-->
+                    {{form.Question(class="form-control form-control-lg")}}
+                   {%endif%}
+     </div>
+          </fieldset>
+          <div class="form-group">
+                   {{form.submit(class="btn btn-outline-info")}}
+          </div>
+          <div class="form-group">
+                   {{pred_prob*100}} percent.
+          </div>
+           <div class="form-group">
+                   {{ans}}
+          </div>
+        </form>
+  </div>
+  
+{% endblock content %}
